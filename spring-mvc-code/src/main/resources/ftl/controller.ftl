@@ -20,6 +20,6 @@ ${imp}
 public class ${class_name}Controller {
 
     @Resource
-    private ${class_name}Service ${lowClassName}Service;
+    private ${class_name}Service ${low_class_name}Service;
 
 }

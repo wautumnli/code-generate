@@ -20,6 +20,7 @@ public class ApplicationConfig {
     public FreeMarkerConfigurer freeMarkerConfigurer() {
         FreeMarkerConfigurer configurer = new FreeMarkerConfigurer();
         configurer.setDefaultEncoding("UTF-8");
+        // ftl目录
         configurer.setTemplateLoaderPath("classpath:/ftl");
         Map<String, Object> variables = new HashMap<>(1 << 1);
         variables.put("xml_escape", "fmXmlEscape");

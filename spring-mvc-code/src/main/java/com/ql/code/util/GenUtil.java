@@ -76,6 +76,12 @@ public class GenUtil {
         return MYSQL_TO_JAVA.getOrDefault(mysqlDataType, "Object");
     }
 
+    /**
+     * 首字母小写
+     *
+     * @param str the str
+     * @return the {@link String} data
+     */
     public static String firstLow(String str) {
         if (Character.isLowerCase(str.charAt(0))) {
             return str;

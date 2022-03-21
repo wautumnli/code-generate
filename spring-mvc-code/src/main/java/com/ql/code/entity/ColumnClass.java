@@ -23,13 +23,9 @@ public class ColumnClass {
      */
     private String column;
     /**
-     * 列名称
+     * 列名称（驼峰）
      */
     private String columnName;
-    /**
-     * 首字母小写
-     */
-    private String lowClassName;
     /**
      * 列大小
      */

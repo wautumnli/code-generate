@@ -20,6 +20,6 @@ ${imp}
 public class ${class_name}ManagerImpl implements ${class_name}Manager {
 
     @Resource
-    private ${class_name}Dao ${lowClassName}Dao;
+    private ${class_name}Dao ${low_class_name}Dao;
 
 }

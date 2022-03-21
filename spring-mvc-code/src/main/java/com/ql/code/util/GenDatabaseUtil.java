@@ -2,7 +2,6 @@ package com.ql.code.util;
 
 import com.ql.code.config.GenConfig;
 import com.ql.code.entity.ColumnClass;
-import com.ql.code.util.GenUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -87,7 +86,6 @@ public class GenDatabaseUtil {
                     tableName,
                     columnName,
                     GenUtil.underlineToHump(columnName),
-                    GenUtil.firstLow(GenUtil.underlineToHump(columnName)),
                     resultSet.getInt("COLUMN_SIZE"),
                     GenUtil.fieldConversion(resultSet.getString("TYPE_NAME")),
                     remarks, nullAble

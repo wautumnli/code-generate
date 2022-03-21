@@ -38,4 +38,9 @@ public class GenConfig {
      * 链接地址
      */
     private String url;
+
+    /**
+     * 主键名称
+     */
+    private String id = "id";
 }

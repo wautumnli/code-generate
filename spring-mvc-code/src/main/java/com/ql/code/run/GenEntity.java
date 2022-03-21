@@ -1,5 +1,6 @@
 package com.ql.code.run;
 
+import com.ql.code.config.GenConfig;
 import com.ql.code.entity.ColumnClass;
 import com.ql.code.util.GenDatabaseUtil;
 import com.ql.code.util.GenUtil;
@@ -33,12 +34,14 @@ public class GenEntity implements ApplicationRunner {
     private GenDatabaseUtil genDatabaseUtil;
     @Resource
     private FreeMarkerConfigurer freeMarkerConfigurer;
+    @Resource
+    private GenConfig genConfig;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
         log.info("begin generate code..");
         Configuration configuration = freeMarkerConfigurer.createConfiguration();
-        // 获取数据库所有表
+        // 获取所有表
         List<String> tables = genDatabaseUtil.getTables();
         if (CollectionUtils.isEmpty(tables)) {
             log.error("database don't have tables!");
@@ -46,47 +49,47 @@ public class GenEntity implements ApplicationRunner {
         }
         // 存放模板变量
         Map<String, Object> data = new HashMap<>();
-        // 文件写入
-        Template entityTemplate = null;
+        // 读取freeMaker模板
+        Template template;
         for (String table : tables) {
             // 工具类将下划线命名转化为驼峰
-            String entityClassName = GenUtil.underlineToHump(table, true);
-            data.put("table_name", table);
-            data.put("class_name", entityClassName);
-            data.put("lowClassName", GenUtil.firstLow(entityClassName));
             List<ColumnClass> columns = genDatabaseUtil.getColumns(table);
-            columns.removeIf(column -> column.getColumn().equals("id"));
+            String className = GenUtil.underlineToHump(table, true);
+            data.put("table_name", table);
+            data.put("class_name", className);
+            data.put("low_class_name", GenUtil.firstLow(className));
             data.put("columns", columns);
+            data.put("id", genConfig.getId());
             // pom
-            entityTemplate = configuration.getTemplate("pom.ftl");
-            initPom(entityTemplate);
+            template = configuration.getTemplate("pom.ftl");
+            initPom(template);
             // run
-            entityTemplate = configuration.getTemplate("springRun.ftl");
-            initRun(entityTemplate);
+            template = configuration.getTemplate("springRun.ftl");
+            initRun(template);
             // resource
-            entityTemplate = configuration.getTemplate("resource.ftl");
-            initResource(entityTemplate);
+            template = configuration.getTemplate("resource.ftl");
+            initResource(template);
             // entity
-            entityTemplate = configuration.getTemplate("entity.ftl");
-            initEntity(table, entityTemplate, data);
+            template = configuration.getTemplate("entity.ftl");
+            initEntity(table, template, data);
             // dao
-            entityTemplate = configuration.getTemplate("dao.ftl");
-            initDao(table, entityTemplate, data);
+            template = configuration.getTemplate("dao.ftl");
+            initDao(table, template, data);
             // manager
-            entityTemplate = configuration.getTemplate("manager.ftl");
-            initManager(table, entityTemplate, data);
+            template = configuration.getTemplate("manager.ftl");
+            initManager(table, template, data);
             // manager impl
-            entityTemplate = configuration.getTemplate("managerImpl.ftl");
-            initManagerImpl(table, entityTemplate, data);
+            template = configuration.getTemplate("managerImpl.ftl");
+            initManagerImpl(table, template, data);
             // service
-            entityTemplate = configuration.getTemplate("service.ftl");
-            initService(table, entityTemplate, data);
+            template = configuration.getTemplate("service.ftl");
+            initService(table, template, data);
             // service impl
-            entityTemplate = configuration.getTemplate("serviceImpl.ftl");
-            initServiceImpl(table, entityTemplate, data);
+            template = configuration.getTemplate("serviceImpl.ftl");
+            initServiceImpl(table, template, data);
             // controller
-            entityTemplate = configuration.getTemplate("controller.ftl");
-            initController(table, entityTemplate, data);
+            template = configuration.getTemplate("controller.ftl");
+            initController(table, template, data);
         }
     }
 

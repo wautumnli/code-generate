@@ -18,8 +18,8 @@ ${imp}
 public class ${class_name}ServiceImpl implements ${class_name}Service {
 
     @Resource
-    private ${class_name}Dao ${lowClassName}Dao;
+    private ${class_name}Dao ${low_class_name}Dao;
     @Resource
-    private ${class_name}Manager ${lowClassName}Manager;
+    private ${class_name}Manager ${low_class_name}Manager;
 
 }
