@@ -18,16 +18,16 @@ public class GenUtil {
     public static final String SUFFIX = ".java";
 
     static {
-        MYSQL_TO_JAVA.put("VARCHAR", "java.lang.String");
-        MYSQL_TO_JAVA.put("BIGINT", "java.lang.Long");
-        MYSQL_TO_JAVA.put("DATE", "java.time.LocalDate");
-        MYSQL_TO_JAVA.put("FLOAT", "java.lang.Float");
-        MYSQL_TO_JAVA.put("TINYINT", "java.lang.Integer");
-        MYSQL_TO_JAVA.put("INT", "java.lang.Integer");
-        MYSQL_TO_JAVA.put("BINARY", "java.lang.Byte");
-        MYSQL_TO_JAVA.put("SMALLINT", "java.lang.Short");
-        MYSQL_TO_JAVA.put("DATETIME", "java.time.LocalDateTime");
-        MYSQL_TO_JAVA.put("BIT", "java.lang.Boolean");
+        MYSQL_TO_JAVA.put("VARCHAR", "String");
+        MYSQL_TO_JAVA.put("BIGINT", "Long");
+        MYSQL_TO_JAVA.put("DATE", "LocalDate");
+        MYSQL_TO_JAVA.put("FLOAT", "Float");
+        MYSQL_TO_JAVA.put("TINYINT", "Integer");
+        MYSQL_TO_JAVA.put("INT", "Integer");
+        MYSQL_TO_JAVA.put("BINARY", "Byte");
+        MYSQL_TO_JAVA.put("SMALLINT", "Short");
+        MYSQL_TO_JAVA.put("DATETIME", "Date");
+        MYSQL_TO_JAVA.put("BIT", "Boolean");
     }
 
 
@@ -74,5 +74,13 @@ public class GenUtil {
      */
     public static String fieldConversion(String mysqlDataType) {
         return MYSQL_TO_JAVA.getOrDefault(mysqlDataType, "Object");
+    }
+
+    public static String firstLow(String str) {
+        if (Character.isLowerCase(str.charAt(0))) {
+            return str;
+        } else {
+            return Character.toLowerCase(str.charAt(0)) + str.substring(1);
+        }
     }
 }

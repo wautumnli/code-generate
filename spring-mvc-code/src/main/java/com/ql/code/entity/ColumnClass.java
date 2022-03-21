@@ -19,9 +19,17 @@ public class ColumnClass {
      */
     private String tableName;
     /**
+     * 原始列名
+     */
+    private String column;
+    /**
      * 列名称
      */
     private String columnName;
+    /**
+     * 首字母小写
+     */
+    private String lowClassName;
     /**
      * 列大小
      */

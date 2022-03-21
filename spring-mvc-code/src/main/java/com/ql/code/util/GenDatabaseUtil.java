@@ -85,7 +85,9 @@ public class GenDatabaseUtil {
             Boolean nullAble = resultSet.getInt("NULLABLE") == 1;
             columns.add(new ColumnClass(
                     tableName,
+                    columnName,
                     GenUtil.underlineToHump(columnName),
+                    GenUtil.firstLow(GenUtil.underlineToHump(columnName)),
                     resultSet.getInt("COLUMN_SIZE"),
                     GenUtil.fieldConversion(resultSet.getString("TYPE_NAME")),
                     remarks, nullAble
