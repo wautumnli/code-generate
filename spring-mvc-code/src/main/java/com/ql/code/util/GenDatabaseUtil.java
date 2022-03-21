@@ -1,10 +1,12 @@
-package com.ql.code.config;
+package com.ql.code.util;
 
+import com.ql.code.config.GenConfig;
 import com.ql.code.entity.ColumnClass;
 import com.ql.code.util.GenUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -13,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 数据库工具
+ *
  * @author wanqiuli
  * @date 2022/3/18 17:35
  */
@@ -20,11 +24,8 @@ import java.util.List;
 @Component
 public class GenDatabaseUtil {
 
-    private final GenConfig genConfig;
-
-    public GenDatabaseUtil(GenConfig genConfig) {
-        this.genConfig = genConfig;
-    }
+    @Resource
+    private GenConfig genConfig;
 
     private DatabaseMetaData getMetaData() throws Exception {
         Class.forName(genConfig.getDriverClass());

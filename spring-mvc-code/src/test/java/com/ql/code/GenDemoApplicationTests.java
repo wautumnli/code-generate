@@ -1,6 +1,6 @@
 package com.ql.code;
 
-import com.ql.code.config.GenDatabaseUtil;
+import com.ql.code.util.GenDatabaseUtil;
 import com.ql.code.run.GenEntity;
 import org.junit.Test;
 import org.junit.runner.RunWith;

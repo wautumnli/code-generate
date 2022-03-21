@@ -5,6 +5,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 /**
+ * 配置参数
+ *
  * @author wanqiuli
  * @date 2022/3/18 17:30
  */
@@ -36,5 +38,4 @@ public class GenConfig {
      * 链接地址
      */
     private String url;
-
 }

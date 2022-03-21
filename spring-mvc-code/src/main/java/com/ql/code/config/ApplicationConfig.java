@@ -7,6 +7,12 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * freeMarker配置类
+ *
+ * @author wanqiuli
+ * @date 2022/3/21 12:17
+ */
 @Configuration
 public class ApplicationConfig {
 

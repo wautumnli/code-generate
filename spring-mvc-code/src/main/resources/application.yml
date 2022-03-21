@@ -5,8 +5,8 @@ application:
     # 用户名
     username: root
     # 密码
-    password: root
+    password: 521piiig
     # 库名
-    catalog: generate
+    catalog: ddd
     # 数据库地址
-    url: jdbc:mysql://127.0.0.1:3306/generate?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://127.0.0.1:3306/ddd?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8

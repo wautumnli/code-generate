@@ -5,6 +5,12 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 代码生成工具类
+ *
+ * @author wanqiuli
+ * @date 2022/3/21 12:18
+ */
 @Slf4j
 public class GenUtil {
     private static final String UNDERLINE = "_";

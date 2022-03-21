@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
+ * 数据库信息获取
+ *
  * @author wanqiuli
  * @date 2022/3/18 17:30
  */
