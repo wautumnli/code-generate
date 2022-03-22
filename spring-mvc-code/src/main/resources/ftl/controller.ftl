@@ -1,4 +1,4 @@
-package ${package_name};
+package ${package};
 
 
 import org.springframework.web.bind.annotation.RestController;
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 <#list import as imp>
-${imp}
+import ${imp};
 </#list>
 
 

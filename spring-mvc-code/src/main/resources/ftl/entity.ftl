@@ -1,4 +1,4 @@
-package ${package_name};
+package ${package};
 
 import lombok.Data;
 
@@ -22,10 +22,26 @@ import java.util.Date;
 @TableName("${table_name}")
 public class ${class_name} implements Serializable {
 
-    @TableId(value = "id", type =IdType.ASSIGN_ID)
-    private Long id;
 <#list columns as column>
 
+    <#if column.column == '${id}'>
+    @TableId(value = "${id}", type =IdType.AUTO)
+    private ${column.columnType} ${column.columnName};
+    <#elseif column.column == "create_time">
+    @TableField(value = "create_time", fill = FieldFill.INSERT)
+    private ${column.columnType} createTime;
+    <#elseif column.column == "update_time">
+    @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
+    private ${column.columnType} updateTime;
+    <#elseif column.column == "deleted">
+    @TableField(value = "deleted")
+    @TableLogic
+    private ${column.columnType} deleted;
+    <#elseif column.column == "ver">
+    @TableField(value = "ver")
+    @Version
+    private ${column.columnType} ver;
+    <#else>
     <#if column.columnComment != "">
     /**
     * ${column.columnComment}
@@ -33,25 +49,6 @@ public class ${class_name} implements Serializable {
     </#if>
     @TableField(value = "${column.column}")
     private ${column.columnType} ${column.columnName};
+    </#if>
 </#list>
-
-    @TableField(value = "create_user")
-    private String createUser;
-
-    @TableField(value = "create_time", fill = FieldFill.INSERT)
-    private Date createTime;
-
-    @TableField(value = "update_user")
-    private String updateUser;
-
-    @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
-    private Date updateTime;
-
-    @TableField(value = "deleted")
-    @TableLogic
-    private Integer deleted;
-
-    @TableField(value = "ver")
-    @Version
-    private String ver;
 }

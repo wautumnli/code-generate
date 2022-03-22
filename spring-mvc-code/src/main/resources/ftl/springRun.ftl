@@ -1,4 +1,4 @@
-package com.ql;
+package ${package};
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -9,10 +9,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 * @date ${.now?datetime}
 */
 @SpringBootApplication
-@MapperScan("com.ql.dao")
-public class ApplicationRun {
+@MapperScan("${mapper_scan}")
+public class DemoGenerateRun {
 
     public static void main(String[] args) {
-        SpringApplication.run(ApplicationRun.class, args);
+        SpringApplication.run(DemoGenerateRun.class, args);
     }
 }

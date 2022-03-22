@@ -1,11 +1,11 @@
-package ${package_name};
+package ${package};
 
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
 <#list import as imp>
-${imp}
+import ${imp};
 </#list>
 
 /**

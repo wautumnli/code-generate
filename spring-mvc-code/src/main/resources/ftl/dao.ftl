@@ -1,7 +1,8 @@
-package ${package_name};
+package ${package};
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-${import}
+<#list import as imp>
+import ${imp};
+</#list>
 
 /**
 * 接口层

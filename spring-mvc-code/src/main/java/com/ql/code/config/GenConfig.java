@@ -43,4 +43,14 @@ public class GenConfig {
      * 主键名称
      */
     private String id = "id";
+
+    /**
+     * 包路径
+     */
+    private String packageRoute = "com.ql";
+
+    /**
+     * 项目名称
+     */
+    private String projectName = "demo";
 }
