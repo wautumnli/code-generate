@@ -36,7 +36,6 @@ public abstract class Init {
         if (!file.exists()) {
             if (!new File(path).mkdirs()) {
                 log.error("{} 创建文件夹失败", path);
-                return;
             }
             if (!file.createNewFile()) {
                 log.error("{} 创建文件失败", tableName);

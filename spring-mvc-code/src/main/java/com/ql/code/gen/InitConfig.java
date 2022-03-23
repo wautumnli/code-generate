@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import javax.xml.transform.Result;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +35,12 @@ public class InitConfig {
     private SpringRunInit springRunInit;
     @Resource
     private ResourcesInit resourcesInit;
+    @Resource
+    private DtoInit dtoInit;
+    @Resource
+    private ResultInit resultInit;
+    @Resource
+    private AdviceInit adviceInit;
 
     @Bean("initList")
     public List<Init> initList() {
@@ -45,6 +52,7 @@ public class InitConfig {
         initList.add(managerImplInit);
         initList.add(serviceImplInit);
         initList.add(controllerInit);
+        initList.add(dtoInit);
         return initList;
     }
 
@@ -54,6 +62,8 @@ public class InitConfig {
         initList.add(pomInit);
         initList.add(springRunInit);
         initList.add(resourcesInit);
+        initList.add(resultInit);
+        initList.add(adviceInit);
         return initList;
     }
 }
